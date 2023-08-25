@@ -1,13 +1,17 @@
 package application;
 
 import boardgame.Posicao;
+import chess.PartidaXadrez;
 
 public class Programa {
 
 
     public static void main(String[] args) {
-        Posicao p1 = new Posicao(3, 5);
-        System.out.println(p1);
+        
+        
+       PartidaXadrez partidaXadrez = new PartidaXadrez();
+       
+       UI.printTabuleiro(partidaXadrez.getPecas());
     }
     
 }
