@@ -4,7 +4,11 @@
  */
 package chess;
 
+import boardgame.Posicao;
 import boardgame.Tabuleiro;
+import static chess.Cor.BRANCO;
+import chess.pecas.Rei;
+import chess.pecas.Torre;
 
 /**
  *
@@ -16,6 +20,7 @@ public class PartidaXadrez {
 
     public PartidaXadrez() {
         tabuleiro = new Tabuleiro(8, 8);
+        configuracaoInicial();
     }
     
     public PecaXadrez[][]getPecas(){
@@ -27,4 +32,8 @@ public class PartidaXadrez {
                 } return mat;
     }
     
+       private void configuracaoInicial(){   
+        tabuleiro.lugarPeca(new Torre(Cor.BRANCO, tabuleiro), new Posicao(2, 1));
+        tabuleiro.lugarPeca(new Rei(Cor.PRETO, tabuleiro), new Posicao(0, 4));
+        }
 }
