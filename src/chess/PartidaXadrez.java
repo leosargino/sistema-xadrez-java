@@ -4,10 +4,7 @@
  */
 package chess;
 
-import boardgame.Posicao;
 import boardgame.Tabuleiro;
-import static chess.Cor.BRANCO;
-import chess.pecas.Rei;
 import chess.pecas.Torre;
 
 /**
@@ -32,8 +29,13 @@ public class PartidaXadrez {
                 } return mat;
     }
     
-       private void configuracaoInicial(){   
-        tabuleiro.lugarPeca(new Torre(Cor.BRANCO, tabuleiro), new Posicao(2, 1));
-        tabuleiro.lugarPeca(new Rei(Cor.PRETO, tabuleiro), new Posicao(2, 1));
+    private void novoLugarPeca(char coluna, int linha, PecaXadrez peca){
+        tabuleiro.lugarPeca(peca, new PosicaoXadrez(coluna, linha).toPosicao());
+    }
+    
+    private void configuracaoInicial(){   
+        novoLugarPeca('b', 6 ,new Torre(Cor.BRANCO, tabuleiro));
+        novoLugarPeca('e', 8, new Torre(Cor.BRANCO, tabuleiro));
+        
         }
 }
