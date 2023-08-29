@@ -14,7 +14,7 @@ import chess.PecaXadrez;
  */
 public class Torre extends PecaXadrez{
     
-    public Torre(Cor cor, Tabuleiro tabuleiro) {
+    public Torre(Tabuleiro tabuleiro, Cor cor) {
         super(cor, tabuleiro);
     }
 

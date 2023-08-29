@@ -6,7 +6,7 @@ import chess.PecaXadrez;
 
 public class Rei extends PecaXadrez{
     
-    public Rei(Cor cor, Tabuleiro tabuleiro) {
+    public Rei(Tabuleiro tabuleiro, Cor cor) {
         super(cor, tabuleiro);
     }
 
