@@ -4,7 +4,7 @@ import boardgame.Peca;
 import boardgame.Tabuleiro;
 
 
-public class PecaXadrez extends Peca {
+public abstract class PecaXadrez extends Peca {
     
     private Cor cor;
 
