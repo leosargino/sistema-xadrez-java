@@ -1,11 +1,13 @@
 package chess;
 
+import boardgame.TabuleiroException;
 
 
-public class XadrezException extends RuntimeException{
 
-    public XadrezException(String message) {
-        super(message);
+public class XadrezException extends TabuleiroException{
+
+    public XadrezException(String msg) {
+        super(msg);
     }
     
     

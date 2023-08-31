@@ -4,6 +4,7 @@
  */
 package chess;
 
+import boardgame.Peca;
 import boardgame.Posicao;
 import boardgame.Tabuleiro;
 import static chess.Cor.BRANCO;
@@ -30,6 +31,27 @@ public class PartidaXadrez {
                         mat[i][j] = (PecaXadrez) tabuleiro.peca(i,j);
                     }
                 } return mat;
+    }
+    
+    public PecaXadrez excecutaMovimentoXadrez(PosicaoXadrez posicaoOrigem, PosicaoXadrez posicaoDestino){
+        Posicao origem = posicaoOrigem.toPosicao();
+        Posicao destino = posicaoDestino.toPosicao();
+        validacaoPosicaoOrigem(origem);
+        Peca pecaCapturada = move(origem,destino);
+        return (PecaXadrez) pecaCapturada;
+    }
+    
+    private Peca move (Posicao origem, Posicao destino){
+        Peca p = tabuleiro.removePeca(origem);
+        Peca pecaCapturada = tabuleiro.removePeca(destino);
+        tabuleiro.lugarPeca(p, destino);
+        return pecaCapturada;
+    }
+    
+    private void validacaoPosicaoOrigem(Posicao posicao){
+        if(!tabuleiro.existePeca(posicao)){
+            throw new XadrezException("Não existe peça na posição de origem");
+        }
     }
     
     private void novoLugarPeca(char coluna, int linha, PecaXadrez peca){
