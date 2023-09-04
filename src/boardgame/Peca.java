@@ -23,11 +23,14 @@ public abstract class Peca {
     
     public boolean existeMovimentoPossivel(){
         boolean[][] mat = movimentosPossiveis();
-        for (int i = 0; i < mat.length; i++) {
+        for (boolean[] mat1 : mat) {
             for (int j = 0; j < mat.length; j++) {
-                if (mat[i][j]) {
-                }return true;
+                if (mat1[j]) {
+                    return true;
+                }
             }
-        }return false;
-    }
+        }
+    return false;
+ }
+    
 }

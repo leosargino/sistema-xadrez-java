@@ -37,6 +37,7 @@ public class PartidaXadrez {
         Posicao origem = posicaoOrigem.toPosicao();
         Posicao destino = posicaoDestino.toPosicao();
         validacaoPosicaoOrigem(origem);
+        validacaoPosicaoDestino(origem,destino);
         Peca pecaCapturada = move(origem,destino);
         return (PecaXadrez) pecaCapturada;
     }
@@ -52,10 +53,18 @@ public class PartidaXadrez {
         if(!tabuleiro.existePeca(posicao)){
             throw new XadrezException("Não existe peça na posição de origem");
         }
-        if(tabuleiro.peca(posicao).existeMovimentoPossivel()){
+        if(!tabuleiro.peca(posicao).existeMovimentoPossivel()){
             throw new XadrezException("Não há movimentos possíveis para a peça escolhida");
         }
     }
+    
+    public void validacaoPosicaoDestino(Posicao origem, Posicao destino){
+        if(!tabuleiro.peca(origem).possivelMovimento(destino)){
+            throw new XadrezException("A peça escolhida não pode ser movida para o destino");
+        }
+    }
+    
+    
     
     private void novoLugarPeca(char coluna, int linha, PecaXadrez peca){
         tabuleiro.lugarPeca(peca, new PosicaoXadrez(coluna, linha).toPosicao());
