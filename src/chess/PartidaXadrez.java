@@ -17,12 +17,27 @@ import chess.pecas.Torre;
  */
 public class PartidaXadrez {
     
+    
+    private int turno;
+    private Cor jogadorAtual;
     private Tabuleiro tabuleiro;
 
     public PartidaXadrez() {
         tabuleiro = new Tabuleiro(8, 8);
+        turno = 1;
+        jogadorAtual = Cor.BRANCO;
         configuracaoInicial();
     }
+
+    public int getTurno() {
+        return turno;
+    }
+    
+    public Cor getJogadorAtual() {
+        return jogadorAtual;
+    }
+
+    
     
     public PecaXadrez[][]getPecas(){
         PecaXadrez[][] mat = new PecaXadrez[tabuleiro.getLinhas()][tabuleiro.getColunas()];
@@ -45,6 +60,7 @@ public class PartidaXadrez {
         validacaoPosicaoOrigem(origem);
         validacaoPosicaoDestino(origem,destino);
         Peca pecaCapturada = move(origem,destino);
+        proximoTurno();
         return (PecaXadrez) pecaCapturada;
     }
     
@@ -59,18 +75,25 @@ public class PartidaXadrez {
         if(!tabuleiro.existePeca(posicao)){
             throw new XadrezException("Não existe peça na posição de origem");
         }
+        if(jogadorAtual != ((PecaXadrez)tabuleiro.peca(posicao)).getCor()){
+            throw new XadrezException("A peça escolhida não é sua");
+        }
         if(!tabuleiro.peca(posicao).existeMovimentoPossivel()){
             throw new XadrezException("Não há movimentos possíveis para a peça escolhida");
         }
     }
     
-    public void validacaoPosicaoDestino(Posicao origem, Posicao destino){
+    private void validacaoPosicaoDestino(Posicao origem, Posicao destino){
         if(!tabuleiro.peca(origem).possivelMovimento(destino)){
             throw new XadrezException("A peça escolhida não pode ser movida para o destino");
         }
     }
     
     
+    private void proximoTurno(){
+        turno++;
+        jogadorAtual = (jogadorAtual == Cor.BRANCO) ? Cor.PRETO : Cor.BRANCO ;
+    }
     
     private void novoLugarPeca(char coluna, int linha, PecaXadrez peca){
         tabuleiro.lugarPeca(peca, new PosicaoXadrez(coluna, linha).toPosicao());
