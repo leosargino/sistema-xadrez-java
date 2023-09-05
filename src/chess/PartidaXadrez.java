@@ -10,6 +10,8 @@ import boardgame.Tabuleiro;
 import static chess.Cor.BRANCO;
 import chess.pecas.Rei;
 import chess.pecas.Torre;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -21,6 +23,9 @@ public class PartidaXadrez {
     private int turno;
     private Cor jogadorAtual;
     private Tabuleiro tabuleiro;
+    
+    private List<Peca> pecasNoTabuleiro = new ArrayList<>();
+    private List<Peca> pecasCapturadas = new ArrayList<>();
 
     public PartidaXadrez() {
         tabuleiro = new Tabuleiro(8, 8);
@@ -67,6 +72,12 @@ public class PartidaXadrez {
     private Peca move (Posicao origem, Posicao destino){
         Peca p = tabuleiro.removePeca(origem);
         Peca pecaCapturada = tabuleiro.removePeca(destino);
+        
+        if(pecaCapturada != null) {
+            pecasNoTabuleiro.remove(pecaCapturada);
+            pecasNoTabuleiro.add(pecaCapturada);
+        }
+        
         tabuleiro.lugarPeca(p, destino);
         return pecaCapturada;
     }
@@ -97,6 +108,7 @@ public class PartidaXadrez {
     
     private void novoLugarPeca(char coluna, int linha, PecaXadrez peca){
         tabuleiro.lugarPeca(peca, new PosicaoXadrez(coluna, linha).toPosicao());
+        pecasNoTabuleiro.add(peca);
     }
     
     private void configuracaoInicial(){   
