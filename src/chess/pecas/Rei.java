@@ -8,7 +8,7 @@ import chess.PecaXadrez;
 public class Rei extends PecaXadrez{
     
     public Rei(Tabuleiro tabuleiro, Cor cor) {
-        super(cor, tabuleiro);
+        super(tabuleiro, cor);
     }
 
     @Override
@@ -63,13 +63,7 @@ public class Rei extends PecaXadrez{
     if(getTabuleiro().existePosicao(p)&& podeMover(p)){
         mat[p.getLinha()][p.getColuna()] = true;
     }
-    
-    //no
-    p.setValor(posicao.getLinha() - 1 , posicao.getColuna() - 1);
-    if(getTabuleiro().existePosicao(p)&& podeMover(p)){
-        mat[p.getLinha()][p.getColuna()] = true;
-    }
-    
+      
     //so
     p.setValor(posicao.getLinha() + 1 , posicao.getColuna() - 1);
     if(getTabuleiro().existePosicao(p)&& podeMover(p)){
@@ -81,8 +75,6 @@ public class Rei extends PecaXadrez{
     if(getTabuleiro().existePosicao(p)&& podeMover(p)){
         mat[p.getLinha()][p.getColuna()] = true;
     }
-    
-    
     
     return mat;    
     }

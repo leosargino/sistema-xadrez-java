@@ -17,20 +17,19 @@ public abstract class Peca {
     
     public abstract boolean[][] movimentosPossiveis();
             
-    public boolean possivelMovimento(Posicao posicao){
+    public boolean movimentoPossivel(Posicao posicao){
         return movimentosPossiveis()[posicao.getLinha()][posicao.getColuna()];
     }
     
-    public boolean existeMovimentoPossivel(){
+    public boolean existeMovimentoPossivel() {
         boolean[][] mat = movimentosPossiveis();
-        for (boolean[] mat1 : mat) {
+        for (int i = 0; i < mat.length; i++) {
             for (int j = 0; j < mat.length; j++) {
-                if (mat1[j]) {
+                if (mat[i][j]) {
                     return true;
                 }
             }
         }
-    return false;
- }
-    
+        return false;
+    }
 }

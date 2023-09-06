@@ -28,7 +28,7 @@ public class Programa {
                 System.out.print("Origem: ");
                 PosicaoXadrez origem = UI.lerPosicaoXadrez(sc);
                 
-                boolean [][] movimentosPossiveis = partidaXadrez.movimentosPossiveis(origem);
+                boolean[][] movimentosPossiveis = partidaXadrez.movimentosPossiveis(origem);
                 UI.limpaConsole();
                 UI.printTabuleiro(partidaXadrez.getPecas(), movimentosPossiveis);
 
@@ -36,7 +36,8 @@ public class Programa {
                 System.out.print("Destino: ");
                 PosicaoXadrez destino = UI.lerPosicaoXadrez(sc);
 
-                PecaXadrez pecaCapturada = partidaXadrez.excecutaMovimentoXadrez(origem, destino);
+                PecaXadrez pecaCapturada = partidaXadrez.executaMovimentoXadrez(origem, destino);
+                
                 if(pecaCapturada != null){
                     capturada.add(pecaCapturada);
                 }
