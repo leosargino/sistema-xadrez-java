@@ -8,6 +8,7 @@ import boardgame.Peca;
 import boardgame.Posicao;
 import boardgame.Tabuleiro;
 import static chess.Cor.BRANCO;
+import chess.pecas.Bispo;
 import chess.pecas.Peao;
 import chess.pecas.Rei;
 import chess.pecas.Torre;
@@ -203,7 +204,9 @@ public class PartidaXadrez {
     private void configuracaoInicial(){   
        
         novoLugarPeca('a', 1, new Torre(tabuleiro, Cor.BRANCO));
+        novoLugarPeca('c', 1, new Bispo(tabuleiro, Cor.BRANCO));
         novoLugarPeca('e', 1, new Rei(tabuleiro, Cor.BRANCO));
+        novoLugarPeca('f', 1, new Bispo(tabuleiro, Cor.BRANCO));
         novoLugarPeca('h', 1, new Torre(tabuleiro, Cor.BRANCO));
         novoLugarPeca('a', 2, new Peao(tabuleiro, Cor.BRANCO));
         novoLugarPeca('b', 2, new Peao(tabuleiro, Cor.BRANCO));
@@ -215,7 +218,9 @@ public class PartidaXadrez {
         novoLugarPeca('h', 2, new Peao(tabuleiro, Cor.BRANCO));
 
         novoLugarPeca('a', 8, new Torre(tabuleiro, Cor.PRETO));
+        novoLugarPeca('c', 8, new Bispo(tabuleiro, Cor.PRETO));
         novoLugarPeca('e', 8, new Rei(tabuleiro, Cor.PRETO));
+        novoLugarPeca('f', 8, new Bispo(tabuleiro, Cor.PRETO));
         novoLugarPeca('h', 8, new Torre(tabuleiro, Cor.PRETO));
         novoLugarPeca('a', 7, new Peao(tabuleiro, Cor.PRETO));
         novoLugarPeca('b', 7, new Peao(tabuleiro, Cor.PRETO));
