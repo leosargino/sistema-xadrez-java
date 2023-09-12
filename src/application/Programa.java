@@ -43,7 +43,11 @@ public class Programa {
                 }
                 if(partidaXadrez.getPromocao() != null){
                     System.out.print("Escolha para promoção (B/C/T/D): ");
-                    String type = sc.nextLine();
+                    String type = sc.nextLine().toUpperCase();
+                    while(!type.equals("B") && !type.equals("C") && !type.equals("T") & !type.equals("D")){
+                    System.out.print("Valor invalido! Escolha para promoção (B/C/T/D): ");
+                    type = sc.nextLine().toUpperCase();
+                    }
                     partidaXadrez.substituiPecaPromovida(type);
                 }
             }catch (XadrezException e){

@@ -14,7 +14,6 @@ import chess.pecas.Peao;
 import chess.pecas.Rainha;
 import chess.pecas.Rei;
 import chess.pecas.Torre;
-import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -126,7 +125,7 @@ public PecaXadrez getEnPassantVulneravel() {
             throw new IllegalStateException("Não há peça para ser promovida");
         }
         if(!type.equals("B") && !type.equals("C") && !type.equals("T") & !type.equals("D")){
-            throw new InvalidParameterException("Tipo invalido para promoção");
+            return promocao;
         }
         Posicao pos = promocao.getPosicaoXadrez().toPosicao();
         Peca p = tabuleiro.removePeca(pos);
