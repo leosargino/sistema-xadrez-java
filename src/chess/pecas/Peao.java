@@ -14,7 +14,7 @@ public class Peao extends PecaXadrez {
         super(tabuleiro, cor);
         this.partidaXadrez = partidaXadrez;
     }
-
+    
     @Override
     public boolean[][] movimentosPossiveis() {
         boolean[][] mat = new boolean[getTabuleiro().getLinhas()][getTabuleiro().getColunas()];
